@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Assignment</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./index.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1  >Closure Assignment</h1>
+    </header>
+    
+
+    <div class="container">
+        <h2 class="Question"><pre>Q1.	"    function counter(){
+            var counter = 0;
+        
+            function IncreaseCounter() {
+                return counter += 1;
+            };
+        
+            return IncreaseCounter;
+        }
+        
+        var counter = counter();
+        alert(counter());
+        alert(counter());
+        alert(counter());
+        alert(counter());"</pre></h2>
+        <p ><span>Output:</span> <pre class="Explain">
+            1
+            2
+            3
+            4
+        </pre></p>
+
+        <p class="Explain"><span>Explanation:</span> In the above code, the outer function return the reference of the inner function IncreaseCounter.IncreaseCounter increases the outer variable counter by 1.  After that we have stored the return value of Counter  into a variable counter.
+            Now, We have called the inner function multiple times which will increase the counter by 1 each time.
+    </p>
+
+    </div>
+
+    <div class="container">
+        <h2 class="Question"><pre>Q2.	"let count = 0;
+            (function () {
+              if (count === 0) {
+                let count = 1;
+                console.log(count); // What is logged?
+              }
+              console.log(count); // What is logged?
+              })();"</pre>	</h2>
+              <p ><span>Output:</span> <pre class="Explain">
+                1
+                0
+            </pre></p>
+        
+        
+        
+        <p class="Explain"><span>Explanation:</span> In the above code, we give count value 0 with let keyword in global scope. when function run inside the block scope of if we redeclared count as 1 using let. As we know let is a block scope. so the first console will print the value <span>1</span> and second console is outside
+            the block of if so it will give <span>0</span> as output.
+</p>
+    </div>
+
+    <div class="container">
+        <h2 class="Question"><pre>Q3.	"for (var i = 0; i < 3; i++) {
+                setTimeout(function log() {
+                    console.log(i); // What is logged?
+                  }, 1000);
+                }"</pre></h2>
+            <p ><span>Output:</span> <pre class="Explain">
+                3
+                3
+                3
+                </pre></p>
+                <p class="Explain"><span>Explanation:</span> In the above code, we have used var kryword which will assign only one address to the variable i. when our for loop works, i value will go to upto 3 where our condition will become false and loop will terminate. setTimeout function will take the updated value of i and print it as many times our condition was true.
+                    In this case it was true for 3 times so it will print the updated value <span>(3)</span> three times.
+        </p>
+    </div>
+
+    <div class="container">
+        <h2 class="Question">Q.4		Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.</h2>
+            <pre class="code">code.   function areaOfRectangle(length){
+                function innerFunction(breadth){
+                    return length* breadth
+                }
+                return innerFunction;
+            }
+            
+            let area = areaOfRectangle(25);
+            console.log(area(4));
+            
+            </pre>
+            <p class="Explain"><span>Explanation:</span> In this code above, we have created a function areaOfRectangle() Which takes length as parameter. Inside which we have created one more function innerFunction() which takes breadth as parameter. 
+            Now our outer function return the reference of our inner function . Then we creater the variable area and assigned it the return value of our outer function.Finally we called our inner Function inside our log with the help of area variable to get out output.</p>
+    </div>
+
+
+    <div class="container">
+        <h2 class="Question">Q5.	Take a variable in outer function and create an inner function to increase the counter every time it is called</h2>
+        <pre class="code">Ans.    function counter(){
+            let counter = 0;
+        
+            function IncreaseCounter() {
+                return counter += 1;
+            };
+        
+            return IncreaseCounter;
+        }
+        
+        var counter = counter();
+        alert(counter());
+        alert(counter());
+        
+        </pre>
+
+        
+        
+</div>
+
+    <div class="container">
+        <h2 class="Question">Q. 6	<pre>	"Print Output
+
+            var a = 12;
+            (function () {
+              alert(a);
+            })();"</pre></h2>
+        
+        <pre class="Explain"><span>Output:</span>       12
+        </pre>
+
+        <p class="Explain"><span>Explanation:</span> In the above code, we first store the variable a and our anonymous function inside our global scope. Then at the time of execution our a will get a value 12 and inside the execution part of our function scope it will console the value of a and give us the output <span>12</span>. </p>
+    </div>
+
+    <div class="container">
+        <h2 class="Question">Q. 7	<pre>	"var a = 10;
+            var x = (function () {
+              var a = 12;
+              return function () {
+                alert(a);
+              };
+            })();
+            x();"</pre></h2>
+        
+        <pre class="Explain"><span>Output:</span>      12</pre>
+        
+        
+        <p class="Explain"><span>Explanation:</span> In the above code, First we have created a variable a and given it value (10). Then we have created a First-Order Function with the name x. inside this function we have redeclared and reassigned the value of our global variable to (12). And then we have created an inner function to get the output of a this inner function is the return value of our outer function. Finally we have called our function using x(); to get the output <span>12</span>.
+
+        </p>
+    </div>
+
+    <div class="container">
+        <h2 class="Question">Q. 8	<pre>	"var globalVar = "xyz ";
+
+            (function outerFunc(outerArg) {
+                var outerVar = 'a';
+                
+                (function innerFunc(innerArg) {
+                var innerVar = 'b';
+                
+                console.log(
+                    "outerArg = " + outerArg + "\n" +
+                    "innerArg = " + innerArg + "\n" +
+                    "outerVar = " + outerVar + "\n" +
+                    "innerVar = " + innerVar + "\n" +
+                    "globalVar = " + globalVar);
+                
+                })(456);
+            })(123);"</pre></h2>
+        <pre class="Explain"><span>Output: </span>    
+            outerArg = 123
+            innerArg = 456
+            outerVar = a
+            innerVar = b
+            globalVar = xyz 
+            </pre>
+        
+    </div>
+
+
+    
+   
+    
+   
+
+
+</body>
+</html>
